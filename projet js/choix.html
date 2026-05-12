@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio - Projets JS</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#0f172a;
+            color:white;
+            min-height:100vh;
+        }
+
+        header{
+            text-align:center;
+            padding:60px 20px;
+            background:linear-gradient(135deg,#4f46e5,#06b6d4);
+        }
+
+        header h1{
+            font-size:40px;
+            margin-bottom:10px;
+        }
+
+        header p{
+            opacity:0.9;
+        }
+
+        .container{
+            max-width:1000px;
+            margin:auto;
+            padding:40px 20px;
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:20px;
+            margin-top:30px;
+        }
+
+        .card{
+            background:#1e293b;
+            padding:20px;
+            border-radius:15px;
+            text-align:center;
+            transition:0.3s;
+            box-shadow:0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+            background:#334155;
+        }
+
+        .card h3{
+            margin-bottom:10px;
+        }
+
+        .card a{
+            display:inline-block;
+            margin-top:10px;
+            padding:10px 15px;
+            background:#3b82f6;
+            color:white;
+            text-decoration:none;
+            border-radius:8px;
+            transition:0.3s;
+        }
+
+        .card a:hover{
+            background:#2563eb;
+        }
+
+        footer{
+            text-align:center;
+            padding:20px;
+            margin-top:40px;
+            opacity:0.7;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Mon Portfolio</h1>
+    <p>Projets JavaScript - Développement Web</p>
+</header>
+
+<div class="container">
+
+    <h2>Mes Projets</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Cookies</h3>
+            <p>Application de gestion des cookies</p>
+            <a href="cookies/index.html">Ouvrir</a>
+        </div>
+        <div class="card">
+            <h3>Météo</h3>
+            <p>Application de prévision météorologique</p>
+            <a href="meteo/meteo.html">Ouvrir</a>
+        </div>
+        <div class="card">
+            <h3>Pokédex</h3>
+            <p>Liste de Pokémon avec API</p>
+            <a href="pokédex/index.html">Ouvrir</a>
+        </div>
+        <div class="card">
+            <h3>Pomodoro</h3>
+            <p>Application de gestion du temps</p>
+            <a href="pomodoro/index.html">Ouvrir</a>
+        </div>
+        <div class="card">
+            <h3>Quizz</h3>
+            <p>Quiz interactif sur les concepts de JavaScript</p>
+            <a href="quizz_css/index.html">Ouvrir</a>
+        </div>
+
+        <div class="card">
+            <h3>To Do Liste</h3>
+            <p>Gestionnaire de tâches</p>
+            <a href="projet-js/todo-list/index.html">Ouvrir</a>
+        </div>
+
+        <div class="card">
+            <h3>DOM</h3>
+            <p>Manipulation du DOM avec JavaScript</p>
+            <a href="TP8 DOM/index.html">Ouvrir</a>
+        </div>
+
+        <div class="card">
+            <h3>Mini Projet</h3>
+            <p>Projet de fin de formation</p>
+            <a href="TP10 mini_projet/index.html">Ouvrir</a>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Mon Portfolio - Fait avec HTML, CSS & JavaScript</p>
+</footer>
+
+</body>
+</html>
