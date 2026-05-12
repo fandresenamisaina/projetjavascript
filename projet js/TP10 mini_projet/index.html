@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Étudiants</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard Étudiants</h1>
+
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Recherche par nom...">
+            
+            <select id="filterParcours">
+                <option value="">Tous les parcours</option>
+            </select>
+
+            <button id="exportBtn">Exporter</button>
+        </div>
+
+        <table id="studentsTable">
+            <thead>
+                <tr>
+                    <th id="thNom">Nom &#x25B2;</th>
+                    <th>Prénom</th>
+                    <th>Parcours</th>
+                    <th id="thMoyenne">Moyenne &#x25B2;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Les étudiants seront injectés ici par JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
