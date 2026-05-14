@@ -2,8 +2,8 @@ const today = new Date();
 const nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
 
 let day = ("0" + nextWeek.getDate()).slice(-2);
-let month = ("0" + (today.getMonth() + 1)).slice(-2);
-let year = today.getFullYear();
+let month = ("0" + (nextWeek.getMonth() + 1)).slice(-2); // CORRIGÉ : nextWeek au lieu de today
+let year = nextWeek.getFullYear(); // CORRIGÉ : nextWeek au lieu de today
 
 const affichage = document.querySelector('.affichage');
 const btns = document.querySelectorAll('button');
@@ -39,6 +39,8 @@ function creerCookie(name, value, exp) {
     affichage.innerHTML = "";
 
     let cookies = document.cookie.split(';');
+    dejaFait = false; // CORRIGÉ : reset au début
+
     cookies.forEach(cookie => {
         cookie = cookie.trim();
         let formatCookie = cookie.split('=');
@@ -49,7 +51,6 @@ function creerCookie(name, value, exp) {
 
     if (dejaFait) {
         infoTxt.innerText = "Le nom est déjà utilisé";
-        dejaFait = false;
         return;
     }
 
@@ -74,6 +75,7 @@ function listeCookies() {
 
     if (document.cookie === "") {
         infoTxt.innerText = "La liste de cookies est vide";
+        affichage.innerHTML = ""; // CORRIGÉ : vider la liste même si vide
         return;
     }
 
@@ -85,7 +87,7 @@ function listeCookies() {
         let formatCookie = cookie.split('=');
 
         let item = document.createElement('li');
-        item.innerText = `Nom : ${decodeURIComponent(formatCookie[0])} | Valeur : ${decodeURIComponent(formatCookie[1])}`;
+        item.innerText = `Nom : ${decodeURIComponent(formatCookie[0])} | Valeur : ${decodeURIComponent(formatCookie[1] || '')}`; // CORRIGÉ : gestion des cookies sans valeur
 
         affichage.appendChild(item);
     });

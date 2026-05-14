@@ -1,89 +1,320 @@
+/* Reset amélioré */
 *, ::before, ::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --border-radius: 16px;
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
+body {
+    font-family: 'Inter', 'Segoe UI', Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    min-height: 100vh;
+    line-height: 1.6;
+    color: var(--text-primary);
+    padding: 1rem;
+}
+
+/* Titre responsive */
 h1 {
     font-family: "Russo One", Arial, sans-serif;
-    font-weight: 700; /* corrigé */
+    font-weight: 700;
     text-align: center;
-    padding: 30px;
-    font-size: 40px;
+    padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 5vw, 2rem);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    overflow: hidden;
 }
 
+h1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--success-color), var(--warning-color), var(--success-color));
+}
+
+/* Conteneur global responsive */
 .container-global {
-    width: 70%;
-    max-width: 800px;
+    width: min(95vw, 70%);
+    max-width: 900px;
     margin: 0 auto;
     height: auto;
 }
 
+/* Bloc de question moderne */
 .question-block {
-    padding: 15px 25px 25px;
-    margin: 20px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* corrigé */
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    margin: 1.5rem 0;
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.question-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .question-block h4 {
-    padding: 10px 0;
-    font-size: 22px;
+    padding: 0 0 1.5rem 0;
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+    margin-bottom: 1.5rem;
 }
 
+/* Labels des options */
 .question-block label {
-    font-size: 20px;
+    display: flex;
+    align-items: center;
+    font-size: clamp(1rem, 2.8vw, 1.2rem);
     cursor: pointer;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    position: relative;
+    user-select: none;
 }
 
+.question-block label:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(5px);
+}
+
+/* Radio buttons stylés */
 .question-block input[type='radio'] {
-    transform: scale(1.8);
-    margin: 10px;
+    transform: scale(1.4);
+    margin-right: 1rem;
+    width: 1.4em;
+    height: 1.4em;
+    accent-color: var(--primary-color);
     cursor: pointer;
+    margin: 0 1rem 0 0;
 }
 
+/* Résultats */
 .resultats h2 {
     text-align: center;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(45deg, var(--success-color), var(--warning-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.aide {
+/* Aide et note */
+.aide, .note {
     text-align: center;
-    font-size: 20px;
-    margin-top: 10px;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
 }
 
 .note {
-    text-align: center;
-    font-size: 25px;
-    margin-top: 10px;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    background: linear-gradient(135deg, var(--success-color), var(--warning-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
+/* Bouton responsive */
 form button {
-    border: 1px solid #333;
-    border-radius: 5px;
+    border: 2px solid var(--text-primary);
+    border-radius: var(--border-radius);
     display: block;
-    margin: 20px auto;
-    padding: 15px 40px;
+    margin: 2rem auto;
+    padding: clamp(1rem, 3vw, 1.3rem) clamp(2rem, 6vw, 4rem);
     cursor: pointer;
-    font-size: 25px;
-    transition: background-color 0.2s ease-in-out; /* corrigé */
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+form button:hover::before {
+    left: 100%;
 }
 
 form button:hover {
-    background-color: lightblue;
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
 }
 
+form button:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* Animation échec améliorée */
 .echec {
-    animation: echec 0.3s ease-in-out;
+    animation: echec 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @keyframes echec {
-    0% { transform: translateX(0px); }
-    33% { transform: translateX(5px); }
-    66% { transform: translateX(-5px); }
-    100% { transform: translateX(0px); }
+    0%, 100% { 
+        transform: translateX(0) rotate(0deg); 
+    }
+    25% { 
+        transform: translateX(-8px) rotate(-2deg); 
+    }
+    75% { 
+        transform: translateX(8px) rotate(2deg); 
+    }
+}
+
+/* Media Queries optimisées */
+
+/* Tablettes */
+@media (max-width: 768px) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    .container-global {
+        width: 95vw;
+    }
+    
+    .question-block {
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    .question-block label {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem;
+        gap: 0.8rem;
+    }
+    
+    .question-block input[type='radio'] {
+        margin: 0 0 0 0;
+        align-self: flex-start;
+    }
+}
+
+/* Mobiles */
+@media (max-width: 480px) {
+    h1 {
+        padding: 2rem 1rem;
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+    
+    .question-block {
+        padding: 1.2rem;
+        border-radius: 12px;
+    }
+    
+    .question-block h4 {
+        font-size: 1.3rem;
+    }
+    
+    form button {
+        width: 90%;
+        padding: 1.2rem 2rem;
+    }
+}
+
+/* Très petits écrans */
+@media (max-width: 360px) {
+    .container-global {
+        padding: 0 0.5rem;
+    }
+    
+    .question-block label {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+    }
+    
+    body {
+        background: linear-gradient(135deg, #1e1b4b 0%, #2a1d5c 100%);
+    }
+    
+    .question-block {
+        background: rgba(30, 41, 59, 0.95);
+        color: var(--text-primary);
+    }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Impression */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .question-block {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
 }
